@@ -14,18 +14,19 @@
   var fragmentCascadeTimer = null;
   var fragmentCascadeWave = 0;
   var memories = [
-    { title: 'Un instant bleu', date: 'portrait fourni', text: 'Une respiration visuelle, différente, comme une parenthèse dans le fil des souvenirs.', type: 'image', image: MEDIA.photos.daniela[2] },
-    { title: 'Une présence douce', date: 'portrait fourni', text: 'Un autre regard, conservé ici sans chercher à lui imposer une histoire.', type: 'image', image: MEDIA.photos.daniela[4] },
-    { title: 'Une image en mouvement', date: 'moment fourni', text: 'Un instant vivant, à regarder quand tu en as envie.', type: 'video', video: MEDIA.videos.memories[0] },
-    { title: 'Un moment calme', date: 'moment fourni', text: 'La suite se découvre lentement, sans défilement automatique.', type: 'video', video: MEDIA.videos.memories[1] },
-    { title: 'Un sourire qui reste', date: 'moment fourni', text: 'Quelques secondes en mouvement, simplement posées dans le parcours.', type: 'video', video: MEDIA.videos.memories[2] },
-    { title: 'Une respiration', date: 'moment fourni', text: 'Un fragment vidéo à ouvrir au moment où tu le souhaites.', type: 'video', video: MEDIA.videos.memories[3] },
+    { title: 'ma petite memmmmm', date: 'portrait fourni', text: 'Une respiration visuelle, différente, comme une parenthèse dans le fil des souvenirs.', type: 'image', image: MEDIA.photos.daniela[2] },
+    { title: 'regarde toiiii', date: 'portrait fourni', text: 'Un autre regard, conservé ici sans chercher à lui imposer une histoire.', type: 'image', image: MEDIA.photos.daniela[4] },
+    { title: 'ma bosse ladyyyyyy', date: 'moment fourni', text: 'Un instant vivant, à regarder quand tu en as envie.', type: 'video', video: MEDIA.videos.memories[0] },
+    { title: 'tu joue tros les badies meme', date: 'moment fourni', text: 'La suite se découvre lentement, sans défilement automatique.', type: 'video', video: MEDIA.videos.memories[1] },
+    { title: 'regarde son ventre', date: 'moment fourni', text: 'Quelques secondes en mouvement, simplement posées dans le parcours.', type: 'video', video: MEDIA.videos.memories[2] },
+    { title: 'sourire parfois aussi', date: 'moment fourni', text: 'Un fragment vidéo à ouvrir au moment où tu le souhaites.', type: 'video', video: MEDIA.videos.memories[3] },
     { title: 'Une silhouette, une lumière', date: 'moment fourni', text: 'Un souvenir visuel qui prend son temps.', type: 'video', video: MEDIA.videos.memories[4] },
     { title: 'Un instant spontané', date: 'moment fourni', text: 'Une petite découverte en mouvement, sans commentaire ajouté.', type: 'video', video: MEDIA.videos.memories[5] },
     { title: 'Une dernière image avant le mot', date: 'portrait fourni', text: 'Une présence gardée juste avant la conclusion.', type: 'image', image: MEDIA.photos.daniela[6] },
-    { title: 'Le mouvement continue', date: 'moment fourni', text: 'Un dernier moment à regarder avant de garder le dernier mot.', type: 'video', video: MEDIA.videos.memories[6] },
-    { title: 'Encore quelques secondes', date: 'moment fourni', text: 'La mémoire ne se presse pas.', type: 'video', video: MEDIA.videos.memories[7] },
-    { title: 'Avant la fin', date: 'moment fourni', text: 'Une dernière respiration en mouvement avant l’écran final.', type: 'video', video: MEDIA.videos.memories[8] }
+    { title: 'encore elle', date: 'moment fourni', text: 'Un dernier moment à regarder avant de garder le dernier mot.', type: 'video', video: MEDIA.videos.memories[6] },
+    { title: 'oui cest toi laaa', date: 'moment fourni', text: 'La mémoire ne se presse pas.', type: 'video', video: MEDIA.videos.memories[7] },
+    { title: 'Avant la fin', date: 'moment fourni', text: 'Une dernière respiration en mouvement avant l’écran final.', type: 'video', video: MEDIA.videos.memories[8] },
+    { title: 'un coeur noir', date: 'pour toi', text: 'Un petit cœur noir, gardé juste à la fin.', type: 'image', image: 'assets/decorative/black-heart.svg' }
   ];
 
   function trackFor(screenId) {
@@ -327,7 +328,7 @@
     var dots = document.getElementById('memory-dots');
     var cards = document.getElementById('memory-cards');
     var reaction = document.getElementById('memory-reaction');
-    var cardIndexes = [0, 1, 2, 3, 8, 9];
+    var cardIndexes = [0, 1, 2, 3, 8, 9, memories.length - 1];
     function resumeMemoryMusic() {
       if (window.AudioManager && AudioManager.isEnabled()) {
         AudioManager.changeTrack(MEDIA.audio.memories, 500);

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#111016">
+  <meta name="description" content="Une expérience créée spécialement pour toi.">
+  <title>Pour Danie</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css?v=8">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="false" aria-label="Couper ou rétablir la musique">son off</button>
+  <main id="experience" aria-live="polite">
+    <section id="screen-welcome" class="screen screen--opening is-active">
+      <div class="opening-orbit" aria-hidden="true"></div>
+      <div class="screen-content opening-content">
+        <p class="eyebrow intro-reveal intro-reveal--one">une parenthèse rien qu'à toi</p>
+        <p class="opening-line intro-reveal intro-reveal--two">JOYEUX ANNIVERSAIRE</p>
+        <h1 class="intro-reveal intro-reveal--three">Danie<span class="soft-dot">.</span></h1>
+        <p class="opening-line intro-reveal intro-reveal--four">Cette expérience est rien qu'à toi.</p>
+        <button id="btn-start" class="button button--light intro-reveal intro-reveal--action" hidden>Commencer <span>↗</span></button>
+      </div>
+      <canvas id="welcome-petals" aria-hidden="true"></canvas>
+    </section>
+
+    <section id="screen-intro" class="screen screen--story" hidden>
+      <video
+        class="intro-background-video"
+        data-media-source="introBackground"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      ></video>
+      <div id="intro-flower-cascade" class="intro-flower-cascade" aria-hidden="true"></div>
+      <div class="screen-content story-content">
+        <p class="eyebrow">pas à pas</p>
+        <p class="story-line">Il y a des choses que je voulais te dire autrement.</p>
+        <p class="story-line story-line--muted">Alors j'ai laissé quelques traces.</p>
+        <button id="btn-discover" class="text-button">Découvrir la première <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="screen-album" class="screen screen--album" hidden>
+      <div class="screen-content wide-content">
+        <header class="section-heading">
+          <p class="eyebrow">première trace</p>
+          <h2>Un album à ouvrir,<br><em>pas une galerie.</em></h2>
+          <p class="section-note">Touche la couverture. Puis tourne les pages à ton rythme.</p>
+        </header>
+        <div id="album" class="album" tabindex="0" aria-label="Album interactif">
+          <div class="album-cover">
+            <span class="album-mark">LALA</span>
+            <span class="album-cover-title">pour<br><strong>toi</strong></span>
+            <span class="album-cover-foot">quelques pages choisies</span>
+          </div>
+          <div class="album-pages" aria-live="polite"></div>
+        </div>
+        <div class="album-controls">
+          <button id="album-prev" class="icon-button" aria-label="Page précédente">←</button>
+          <span id="album-progress">couverture</span>
+          <button id="album-next" class="icon-button" aria-label="Page suivante">→</button>
+        </div>
+        <button id="btn-fragments" class="button button--outline" hidden>Continuer les fragments <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="screen-fragments" class="screen screen--fragments" hidden>
+      <div id="fragment-flower-cascade" class="fragment-flower-cascade" aria-hidden="true"></div>
+      <div class="screen-content wide-content">
+        <header class="section-heading">
+          <p class="eyebrow">les petites choses</p>
+          <h2>21 fragments,<br><em>à ouvrir dans le désordre.</em></h2>
+          <p class="section-note">Chaque carte cache une pensée. Commence par celle qui t'attire.</p>
+        </header>
+        <p id="fragment-progress" class="fragment-progress" aria-live="polite">0 / 21 pensées découvertes</p>
+        <div class="fragment-hearts" aria-hidden="true"></div>
+        <div id="fragment-grid" class="fragment-grid"></div>
+        <div id="fragment-complete" class="fragment-complete" hidden>
+          <p>21 pensées découvertes.<br><em>Mais il reste encore quelque chose à découvrir.</em></p>
+          <button id="btn-roses" class="button button--light">Continuer <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-roses" class="screen screen--roses" hidden>
+      <div class="screen-content wide-content">
+        <p class="eyebrow">un dernier détour</p>
+        <h2>Et puis, il y a<br><em>les roses.</em></h2>
+        <p class="section-note">Elles arrivent une par une. Reste un instant.</p>
+        <div id="bouquet-container" class="bouquet-stage" aria-label="Bouquet de 56 roses"></div>
+        <p id="roses-count" class="rose-count">0 <span>/ 56</span></p>
+        <button id="btn-memories" class="button button--outline" hidden>Et maintenant...  <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="screen-memories" class="screen screen--memories" hidden>
+      <div class="screen-content wide-content">
+        <p class="eyebrow">à toi</p>
+        <h2> souvenirs<span class="soft-dot">.</span></h2>
+        <p class="memory-intro">J’ai gardé quelques instants de côté. Tu peux les retrouver doucement, un par un, sans avoir besoin de tout regarder d’un coup.</p>
+        <div id="memory-challenge" class="memory-challenge
+          <div class="memory-choices">
+            <button type="button" data-choice="image">une image</button>
+            <button type="button" data-choice="video">un moment en mouvement</button>
+          </div>
+          <p id="memory-reaction" class="memory-reaction" hidden></p>
+        </div>
+        <div class="memory-selection">
+          <p class="eyebrow">choisis un moment</p>
+          <div id="memory-cards" class="memory-cards" role="tablist" aria-label="Choisir un moment"></div>
+        </div>
+        <div id="memory-viewer" class="memory-viewer"></div>
+        <div id="memory-dots" class="memory-dots" role="tablist" aria-label="Souvenirs"></div>
+        <div id="memory-living" class="memory-living">
+          <p class="eyebrow">un instant vivant</p>
+          <p id="memory-living-copy">Prends quelques secondes. Certains moments n’ont pas besoin d’être expliqués.</p>
+        </div>
+        <button id="btn-final" class="button button--light">Garder le dernier mot <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="screen-final" class="screen screen--final" hidden>
+      <div class="screen-content final-content">
+        <p class="eyebrow">pour finir doucement</p>
+        <div id="final-photo" class="final-photo" aria-label="Photo finale"></div>
+        <div class="final-hearts" aria-label="Trois cœurs décoratifs">
+          <img src="assets/decorative/heart-reference.png" alt="">
+          <img src="assets/decorative/heart-reference.png" alt="">
+          <img src="assets/decorative/heart-reference.png" alt="">
+        </div>
+        <p class="final-name">Danie<span class="soft-dot">.</span></p>
+        <p class="final-number">21 ans.</p>
+        <h2>Joyeux anniversaire.</h2>
+        <p class="final-message">Je voulais que tu puisses sentir, entre les lignes,<br>à quel point ta présence compte.</p>
+        <div class="final-rose-line" aria-hidden="true">✦　♡　✦</div>
+        <button id="btn-reset" class="text-button">Recommencer l'expérience</button>
+      </div>
+      <canvas id="final-petals" aria-hidden="true"></canvas>
+      <div id="final-birthday-cascade" class="final-birthday-cascade" aria-hidden="true"></div>
+    </section>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/textGenerator.js"></script>
+  <script src="js/randomizer.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/media.js?v=5"></script>
+  <script src="js/audio.js?v=2"></script>
+  <script src="js/roses.js?v=2"></script>
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>

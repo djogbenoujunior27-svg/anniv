@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rose">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f7d2df"/>
+      <stop offset="100%" stop-color="#d86a92"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#22162f"/>
+  <g transform="translate(32 32)">
+    <path d="M0 -18 C10 -18 18 -10 18 0 C18 10 10 18 0 18 C-10 18 -18 10 -18 0 C-18 -10 -10 -18 0 -18 Z" fill="url(#g)"/>
+    <path d="M0 -30 C-8 -20 -10 -12 -8 -6 C-6 -2 -1 2 0 4 C1 2 6 -2 8 -6 C10 -12 8 -20 0 -30 Z" fill="#fbe7ef"/>
+    <path d="M0 18 L0 34" stroke="#f7d2df" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0 34 C-8 26 -10 20 -7 15" stroke="#f7d2df" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M0 34 C8 26 10 20 7 15" stroke="#f7d2df" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

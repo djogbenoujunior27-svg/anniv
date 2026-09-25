@@ -328,7 +328,7 @@
     var dots = document.getElementById('memory-dots');
     var cards = document.getElementById('memory-cards');
     var reaction = document.getElementById('memory-reaction');
-    var cardIndexes = [0, 1, 2, 3, 8, 9, memories.length - 1];
+    var cardIndexes = memories.map(function (_, index) { return index; });
     function resumeMemoryMusic() {
       if (window.AudioManager && AudioManager.isEnabled()) {
         AudioManager.changeTrack(MEDIA.audio.memories, 500);

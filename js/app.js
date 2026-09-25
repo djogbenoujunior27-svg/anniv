@@ -422,7 +422,7 @@
   document.getElementById('final-photo').innerHTML = imageMarkup(MEDIA.photos.final, 'Photo finale de Daniela');
   document.getElementById('audio-toggle').addEventListener('click', function () {
     var muted = AudioManager.toggleMute();
-    this.textContent = muted ? 'son off' : 'son on';
+    this.textContent = muted ? 'OFF 🔇' : 'ON 🔊';
     this.setAttribute('aria-pressed', String(!muted));
   });
   document.getElementById('btn-reset').addEventListener('click', function () {

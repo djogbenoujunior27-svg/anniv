@@ -8,6 +8,7 @@ window.AudioManager = (function () {
   let audio = null;
   let volume = 0.55;
   let currentTrack = null;
+  let pendingTrack = null;
   let fading = null;
   let transitionTimer = null;
   let enabled = false;
@@ -51,8 +52,10 @@ window.AudioManager = (function () {
 
   function play() {
     init();
-    if (!enabled) return;
-    audio.play().catch(function () { /* silencieux : pas de musique, pas de casse */ });
+    if (!enabled || muted || !hasRealAsset(currentTrack)) return;
+    audio.play().catch(function (error) {
+      console.warn('La musique ne peut pas démarrer.', error);
+    });
   }
 
   function pause() {
@@ -66,7 +69,26 @@ window.AudioManager = (function () {
 
   function toggleMute() {
     muted = !muted;
-    if (audio) audio.volume = muted ? 0 : volume;
+    if (muted) {
+      transitionId++;
+      if (transitionTimer) {
+        clearTimeout(transitionTimer);
+        transitionTimer = null;
+      }
+      if (fading) {
+        clearInterval(fading);
+        fading = null;
+      }
+      if (audio) {
+        if (hasRealAsset(pendingTrack)) setSource(pendingTrack);
+        audio.volume = 0;
+        audio.pause();
+      }
+      pendingTrack = null;
+    } else if (audio) {
+      audio.volume = volume;
+      play();
+    }
     return muted;
   }
 
@@ -82,7 +104,9 @@ window.AudioManager = (function () {
     const steps = 24;
     let i = 0;
     audio.volume = 0;
-    audio.play().catch(function () { /* continue sans son */ });
+    audio.play().catch(function (error) {
+      console.warn('La musique ne peut pas démarrer.', error);
+    });
     fading = setInterval(function () {
       i++;
       audio.volume = targetVol * (i / steps);
@@ -119,12 +143,24 @@ window.AudioManager = (function () {
       clearTimeout(transitionTimer);
       transitionTimer = null;
     }
+    pendingTrack = src;
     if (!hasRealAsset(src)) {
       if (fading) {
         clearInterval(fading);
         fading = null;
       }
       setSource('');
+      pendingTrack = null;
+      return Promise.resolve();
+    }
+    if (muted) {
+      if (fading) {
+        clearInterval(fading);
+        fading = null;
+      }
+      setSource(src);
+      audio.volume = 0;
+      pendingTrack = null;
       return Promise.resolve();
     }
     if (currentTrack === src) {
@@ -134,6 +170,7 @@ window.AudioManager = (function () {
       }
       audio.volume = muted ? 0 : volume;
       if (audio.paused) play();
+      pendingTrack = null;
       return Promise.resolve();
     }
     if (fadeDur && audio.currentSrc) {
@@ -143,10 +180,12 @@ window.AudioManager = (function () {
         transitionTimer = null;
         audio.pause();
         setSource(src);
+        pendingTrack = null;
         fadeIn(fadeDur);
       }, fadeDur);
     } else {
       setSource(src);
+      pendingTrack = null;
       fadeIn(600);
     }
     return Promise.resolve();

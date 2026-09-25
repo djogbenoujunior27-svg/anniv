@@ -26,16 +26,8 @@ window.MEDIA = {
       'daniela-06': 'assets/photos/daniela/daniela-06.jpeg',
       'daniela-07': 'assets/photos/daniela/daniela-07.jpeg'
     },
-    memories: [
-      'assets/photos/memories/01.webp',
-      'assets/photos/memories/02.webp',
-      'assets/photos/memories/03.webp'
-    ],
-    couple: [
-      'assets/photos/couple/01.webp',
-      'assets/photos/couple/02.webp',
-      'assets/photos/couple/03.webp'
-    ]
+    memories: [],
+    couple: []
   },
   audio: {
     musicOne: 'assets/audio/musique-1.mp3',
@@ -77,6 +69,6 @@ window.MEDIA = {
     finalHeart: 'assets/decorative/heart-reference.png'
   },
   textures: {
-    album: 'assets/textures/album-paper.webp'
+    album: ''
   }
 };
